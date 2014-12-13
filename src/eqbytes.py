@@ -4,8 +4,8 @@
 #
 # eqbytes.py
 # ----------
-# Reads a file and check how many instances of the file there is where
-# two consequtive bytes are equal.
+# Reads a file and check how many instances of the file there is
+# of two consequtive equal bytes.
 #
 #
 # Author: Joachim Strömbergson
