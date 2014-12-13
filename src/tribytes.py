@@ -50,6 +50,7 @@ import os
 # Defines
 #-------------------------------------------------------------------
 VERBOSE = False
+PRINT_PATTERNS = True
 
 
 #-------------------------------------------------------------------
@@ -74,7 +75,11 @@ def main():
                 (byte_array[0] == byte_array[2]) and
                 (byte_array[0] == byte_array[3])):
                 found_patterns += 1
-                print("Found:", byte_array)
+
+#                if PRINT_PATTERNS:
+#                    print("Found: [0x%02x, 0x%02x, 0x%02x, 0x%02x]" %
+#                          int(byte_array[0]), int(byte_array[1]),
+#                          int(byte_array[2]), int(byte_array[3]))
 
             curr_byte = my_file.read(1)
             byte_array = byte_array[1 : 4] + [curr_byte]
