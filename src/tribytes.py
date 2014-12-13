@@ -47,6 +47,12 @@ import os
 
 
 #-------------------------------------------------------------------
+# Defines
+#-------------------------------------------------------------------
+VERBOSE = False
+
+
+#-------------------------------------------------------------------
 # main()
 #
 # Parse any arguments and run the tests.
@@ -61,16 +67,17 @@ def main():
         total_bytes = 0
 
         while curr_byte:
+            if VERBOSE:
+                print(byte_array)
             total_bytes += 1
             if ((byte_array[0] != byte_array[1]) and
                 (byte_array[0] == byte_array[2]) and
                 (byte_array[0] == byte_array[3])):
                 found_patterns += 1
-                print(byte_array)
+                print("Found:", byte_array)
 
             curr_byte = my_file.read(1)
-            byte_array[0 : 2] = byte_array[1 : 3]
-            byte_array[3] = curr_byte
+            byte_array = byte_array[1 : 4] + [curr_byte]
 
     print("Analyzed file: %s" % (file_name))
     print("Total number of bytes: %d" % (total_bytes))
