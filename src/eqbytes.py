@@ -54,6 +54,10 @@ def main():
     file_name = sys.argv[1]
 
     with open(file_name, 'rb') as my_file:
+        longest_run = 0
+        longest_run_ch = '0'
+        runs = 0
+        runs_ch = '0'
         curr_byte = my_file.read(1)
         prev_byte = 0
         eq_bytes = 0
@@ -63,13 +67,24 @@ def main():
             total_bytes += 1
             if (curr_byte == prev_byte):
                 eq_bytes += 1
+                runs_ch = curr_byte
+                runs +=1
+            else:
+                if runs > longest_run:
+                    longest_run = runs
+                    longest_run_ch = runs_ch
+                runs = 0
+
             prev_byte = curr_byte
             curr_byte = my_file.read(1)
 
     print("Analyzed file: %s" % (file_name))
-    print("Total number of bytes: %d" % (total_bytes))
-    print("Number of equal bytes: %d" % (eq_bytes))
-    print("Frequency in file:     %f" % (float(eq_bytes) / total_bytes))
+    print("Longest run of equal bytes: %d" % (longest_run))
+    print("Char in longest run:        0x%02x" % (ord(longest_run_ch)))
+    print("Total number of bytes:      %d" % (total_bytes))
+    print("Number of equal bytes:      %d" % (eq_bytes))
+    print("Frequency in file:          %f" % (float(eq_bytes) / total_bytes))
+
 
 #-------------------------------------------------------------------
 # __name__
