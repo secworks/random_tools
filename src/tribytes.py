@@ -66,13 +66,16 @@ def main():
         curr_byte = my_file.read(1)
         found_patterns = 0
         eq_bytes = 0
-        total_bytes = 0
+        sum_bytes = 0
+        num_bytes = 0
 
         while curr_byte:
             if VERBOSE:
                 print(byte_array)
 
-            total_bytes += 1
+            byte_array = byte_array[1 : 4] + [curr_byte]
+            sum_bytes += ord(curr_byte)
+            num_bytes += 1
 
             # Equal bytes without preceeding equal byte one step away.
             if ((byte_array[0] != byte_array[2]) and
@@ -86,14 +89,15 @@ def main():
                 found_patterns += 1
 
             curr_byte = my_file.read(1)
-            byte_array = byte_array[1 : 4] + [curr_byte]
+
 
     print("Analyzed file: %s" % (file_name))
-    print("Total number of bytes: %d" % (total_bytes))
+    print("Total number of bytes: %d" % (num_bytes))
     print("Number of patterns:    %d" % (found_patterns))
-    print("Pattern frequency:     %f" % (float(found_patterns) / total_bytes))
+    print("Pattern frequency:     %f" % (float(found_patterns) / num_bytes))
     print("Number byte pairs:     %d" % (eq_bytes))
-    print("Pair frequency:        %f" % (float(eq_bytes) / total_bytes))
+    print("Pair frequency:        %f" % (float(eq_bytes) / num_bytes))
+    print("Average byte value:    %f" % (float(sum_bytes / num_bytes)))
 
 
 #-------------------------------------------------------------------
