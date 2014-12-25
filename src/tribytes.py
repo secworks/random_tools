@@ -97,7 +97,7 @@ def main():
     print("Pattern frequency:     %f" % (float(found_patterns) / num_bytes))
     print("Number byte pairs:     %d" % (eq_bytes))
     print("Pair frequency:        %f" % (float(eq_bytes) / num_bytes))
-    print("Average byte value:    %f" % (float(sum_bytes / num_bytes)))
+    print("Mean byte value:       %f" % (float(sum_bytes / num_bytes)))
 
 
 #-------------------------------------------------------------------
