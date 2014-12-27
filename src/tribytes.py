@@ -6,7 +6,8 @@
 # -----------
 # Reads a file and check how many instances in the file there is
 # of the pattern of three equal bytes with one byte between the
-# two first. Very specific.
+# two first. The code also calculates the frequency of pairs of
+# equal bytes as wall as mean value.
 #
 #
 # Author: Joachim Strömbergson
